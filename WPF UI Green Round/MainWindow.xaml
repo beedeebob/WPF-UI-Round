@@ -1,0 +1,84 @@
+﻿<Window x:Class="WPF_UI_ROUND.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_UI_ROUND"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl Margin="10,10,10,10" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" TabStripPlacement="Top">
+            <TabItem Header="Controls 1">
+                <StackPanel VerticalAlignment="Stretch">
+                    <Button Margin="10,10,0,0" Height="25" Content="Button" Width="100" HorizontalAlignment="Left"/>
+                    <TextBox Margin="10,10,0,0" Height="25" Text="TextBox" Width="100" HorizontalAlignment="Left"/>
+                    <StackPanel Height="auto" Margin="10,10,0,0" HorizontalAlignment="Left" Orientation="Horizontal">
+                        <DatePicker Margin="0,0,0,0" Height="25" Width="100" HorizontalAlignment="Left"/>
+                        <DatePickerTextBox Margin="10,0,0,0" Height="25" Width="100"  HorizontalAlignment="Left"/>
+                    </StackPanel>
+                    <StackPanel Height="auto" Margin="10,10,0,0" HorizontalAlignment="Left" Orientation="Horizontal">
+                        <Calendar Margin="10,0,0,0" Height="auto" Width="auto" HorizontalAlignment="Left"/>
+                        <CalendarItem Margin="10,0,0,0" Width="auto" HorizontalAlignment="Left"/>
+                        <CalendarButton Margin="10,0,0,0" Content="1" HorizontalAlignment="Left" />
+                        <CalendarDayButton Margin="10,0,0,0" Content="1" HorizontalAlignment="Left" />
+                    </StackPanel>
+                    <ComboBox Margin="10,10,0,0" Height="25" Width="100" HorizontalAlignment="Left" IsEditable="False">
+                        <ComboBoxItem Content="Item1"/>
+                        <ComboBoxItem Content="Item2"/>
+                        <ComboBoxItem Content="Item3"/>
+                        <ComboBoxItem Content="Item4"/>
+                        <ComboBoxItem Content="Item5"/>
+                    </ComboBox>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="TreeView">
+                <TreeView Margin="10,10,10,10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <TreeViewItem Header="Item1">
+                        <TreeViewItem Header="Item A">
+                            <TreeViewItem Header="Item I"/>
+                            <TreeViewItem Header="Item II"/>
+                            <TreeViewItem Header="Item III"/>
+                        </TreeViewItem>
+                        <TreeViewItem Header="Item B"/>
+                        <TreeViewItem Header="Item C"/>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Item2"/>
+                    <TreeViewItem Header="Item3"/>
+                    <TreeViewItem Header="Item4"/>
+                    <TreeViewItem Header="Item5"/>
+                </TreeView>
+            </TabItem>
+            <TabItem Header="ListBox">
+                <ListBox Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <ListBoxItem Content="Pizza"/>
+                    <ListBoxItem Content="Houdini"/>
+                    <ListBoxItem Content="Grub"/>
+                    <ListBoxItem Content="Lemon"/>
+                    <ListBoxItem>
+                        <TextBox Text="TextBox Demo"/>
+                    </ListBoxItem>
+                </ListBox>
+            </TabItem>
+            <TabItem Header="ListView">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <ListView Grid.Row="0" Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" Width="auto"/>
+                                <GridViewColumn Header="Surname" Width="auto"/>
+                                <GridViewColumn Header="Age" Width="auto"/>
+                            </GridView>
+                        </ListView.View>
+                        <ListViewItem Content="John" />
+                        <ListViewItem Content="Smith" />
+                        <ListViewItem Content="21" />
+                    </ListView>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
