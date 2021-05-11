@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
         xmlns:local="clr-namespace:WPF_UI_ROUND"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -65,10 +66,10 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <ListView Grid.Row="0" Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <ListView Grid.Row="0" Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsPanel="{DynamicResource ItemsPanelTemplateStyle}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Name" Width="auto"/>
+                                <GridViewColumn Header="Name" Width="auto" />
                                 <GridViewColumn Header="Surname" Width="auto"/>
                                 <GridViewColumn Header="Age" Width="auto"/>
                             </GridView>
