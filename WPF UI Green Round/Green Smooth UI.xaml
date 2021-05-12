@@ -1030,6 +1030,8 @@
         <GradientStop Color="#FF379143" Offset="1"/>
     </LinearGradientBrush>
     <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelected.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelected.Text" Color="White"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewStatic.Text" Color="Black"/>
     <LinearGradientBrush x:Key="ComboBoxItem.ItemsviewSelectedHover.Background" StartPoint="0.5, 0" EndPoint="0.5,1">
         <GradientStop Color="#FF419B4D" Offset="0"/>
         <GradientStop Color="#FF379143" Offset="1"/>
@@ -1052,6 +1054,7 @@
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Foreground" Value="{StaticResource ComboBoxItem.ItemsviewStatic.Text}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBoxItem}">
@@ -1079,6 +1082,7 @@
                             </MultiTrigger.Conditions>
                             <Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelected.Background}"/>
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelected.Border}"/>
+                            <Setter Property="Foreground" Value="{StaticResource ComboBoxItem.ItemsviewSelected.Text}"/>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -1087,6 +1091,7 @@
                             </MultiTrigger.Conditions>
                             <Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelectedHover.Background}"/>
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelectedHover.Border}"/>
+                            <Setter Property="Foreground" Value="{StaticResource ComboBoxItem.ItemsviewSelected.Text}"/>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -1096,6 +1101,7 @@
                             </MultiTrigger.Conditions>
                             <Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelectedNoFocus.Background}"/>
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewSelectedNoFocus.Border}"/>
+                            <Setter Property="Foreground" Value="{StaticResource ComboBoxItem.ItemsviewSelected.Text}"/>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -1856,6 +1862,9 @@
         <GradientStop Color="#902D8739" Offset="0"/>
         <GradientStop Color="#902D8739" Offset="1"/>
     </LinearGradientBrush>
+    <SolidColorBrush x:Key="GridViewColumnHeader.MouseOver.Text" Color="White"/>
+    <SolidColorBrush x:Key="GridViewColumnHeader.Pressed.Text" Color="White"/>
+    <SolidColorBrush x:Key="GridViewColumnHeader.Text" Color="White"/>
     <Style x:Key="GridViewColumnHeaderGripper" TargetType="{x:Type Thumb}">
         <Setter Property="Canvas.Right" Value="-9"/>
         <Setter Property="Width" Value="18"/>
@@ -1881,7 +1890,7 @@
         <Setter Property="Padding" Value="2,2,2,2"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="Foreground" Value="{StaticResource GridViewColumnHeader.Text}"/>
         <Setter Property="FontFamily" Value="SegoeUI"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -1910,11 +1919,13 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="Background" TargetName="HeaderBorder" Value="{StaticResource GridViewColumnHeaderHoverBackground}"/>
+                            <Setter Property="Foreground" Value="{StaticResource GridViewColumnHeader.MouseOver.Text}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
                             <Setter Property="Background" TargetName="HeaderBorder" Value="{StaticResource GridViewColumnHeaderPressBackground}"/>
                             <Setter Property="Visibility" TargetName="PART_HeaderGripper" Value="Hidden"/>
                             <Setter Property="Margin" TargetName="HeaderContent" Value="1,1,0,0"/>
+                            <Setter Property="Foreground" Value="{StaticResource GridViewColumnHeader.Pressed.Text}"/>
                         </Trigger>
                         <Trigger Property="Height" Value="Auto">
                             <Setter Property="MinHeight" Value="20"/>
