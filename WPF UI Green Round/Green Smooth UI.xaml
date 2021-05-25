@@ -127,10 +127,11 @@
     <!--Calendar-->
     <SolidColorBrush x:Key="CalendarDayButton.MouseOver.Border" Color="#FF1E782A"/>
     <LinearGradientBrush x:Key="CalendarDayButton.Today.Background" StartPoint="0.5, 0" EndPoint="0.5,1">
-        <GradientStop Color="#FF68A170" Offset="0"/>
-        <GradientStop Color="#FF5E9766" Offset="1"/>
+        <GradientStop Color="#FF328C3E" Offset="0"/>
+        <GradientStop Color="#FF288234" Offset="1"/>
     </LinearGradientBrush>
     <SolidColorBrush x:Key="CalendarDayButton.Selected.Border" Color="#2d8739"/>
+    <Color x:Key="CalendarDayButton.Today.Foreground">#FFD5DED6</Color>
     <SolidColorBrush x:Key="CalendarButton.MouseOver.Border" Color="#FF1E782A"/>
     <SolidColorBrush x:Key="CalendarButton.Selection.Border" Color="#FF1E782A"/>
     <SolidColorBrush x:Key="CalendarButton.Background" Color="#FFFFFF"/>
@@ -221,6 +222,8 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <SolidColorBrush x:Key="CalendarItem.Static.Foreground" Color="#FFD5DED6"/>
+    <Color x:Key="CalendarItem.MouseOver.Border">#FFD5DED6</Color>
     <Style TargetType="{x:Type CalendarItem}">
         <Setter Property="Margin" Value="0,3,0,3"/>
         <Setter Property="Foreground" Value="#FF333333"/>
@@ -246,7 +249,7 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="1">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="2">
                             <Border BorderBrush="#FFFFFFFF" BorderThickness="2" CornerRadius="1">
                                 <Grid>
                                     <Grid.Resources>
@@ -257,7 +260,7 @@
                                                         <VisualState x:Name="Normal"/>
                                                         <VisualState x:Name="MouseOver">
                                                             <Storyboard>
-                                                                <ColorAnimation Duration="0" To="#FF6c9171" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path"/>
+                                                                <ColorAnimation Duration="0:0:0.05" To="{StaticResource CalendarItem.MouseOver.Border}" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="previousButtonBorder" />
                                                             </Storyboard>
                                                         </VisualState>
                                                         <VisualState x:Name="Disabled">
@@ -267,10 +270,9 @@
                                                         </VisualState>
                                                     </VisualStateGroup>
                                                 </VisualStateManager.VisualStateGroups>
-                                                <Rectangle Fill="#11E5EBF1" Opacity="1" Stretch="Fill"/>
-                                                <Grid>
-                                                    <Path x:Name="path" Data="M288.75,232.25 L288.75,240.625 L283,236.625 z" Fill="{TemplateBinding Foreground}" HorizontalAlignment="Left" Height="10" Margin="14,-6,0,0" Stretch="Fill" VerticalAlignment="Center" Width="6"/>
-                                                </Grid>
+                                                <Border x:Name="previousButtonBorder" BorderBrush="Transparent" BorderThickness="1" CornerRadius="2" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="{TemplateBinding Height}" Height="{TemplateBinding Height}" Padding="3,4,4,4">
+                                                    <Path x:Name="path" Data="M288.75,232.25 L288.75,240.625 L283,236.625 z" Fill="{TemplateBinding Foreground}" HorizontalAlignment="Center" Stretch="Uniform" VerticalAlignment="Center"/>
+                                                </Border>
                                             </Grid>
                                         </ControlTemplate>
                                         <ControlTemplate x:Key="NextButtonTemplate" TargetType="{x:Type Button}">
@@ -280,7 +282,7 @@
                                                         <VisualState x:Name="Normal"/>
                                                         <VisualState x:Name="MouseOver">
                                                             <Storyboard>
-                                                                <ColorAnimation Duration="0" To="#FF6c9171" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="path"/>
+                                                                <ColorAnimation Duration="0:0:0.05" To="{StaticResource CalendarItem.MouseOver.Border}" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="nextButtonBorder"/>
                                                             </Storyboard>
                                                         </VisualState>
                                                         <VisualState x:Name="Disabled">
@@ -290,10 +292,9 @@
                                                         </VisualState>
                                                     </VisualStateGroup>
                                                 </VisualStateManager.VisualStateGroups>
-                                                <Rectangle Fill="#11E5EBF1" Opacity="1" Stretch="Fill"/>
-                                                <Grid>
-                                                    <Path x:Name="path" Data="M282.875,231.875 L282.875,240.375 L288.625,236 z" Fill="{TemplateBinding Foreground}" HorizontalAlignment="Right" Height="10" Margin="0,-6,14,0" Stretch="Fill" VerticalAlignment="Center" Width="6"/>
-                                                </Grid>
+                                                <Border x:Name="nextButtonBorder" BorderBrush="Transparent" BorderThickness="1" CornerRadius="2" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="{TemplateBinding Height}" Height="{TemplateBinding Height}" Padding="4,4,3,4">
+                                                    <Path x:Name="path" Data="M282.875,231.875 L282.875,240.375 L288.625,236 z" Fill="{TemplateBinding Foreground}" HorizontalAlignment="Center" Stretch="Uniform" VerticalAlignment="Center"/>
+                                                </Border>
                                             </Grid>
                                         </ControlTemplate>
                                         <ControlTemplate x:Key="HeaderButtonTemplate" TargetType="{x:Type Button}">
@@ -303,7 +304,7 @@
                                                         <VisualState x:Name="Normal"/>
                                                         <VisualState x:Name="MouseOver">
                                                             <Storyboard>
-                                                                <ColorAnimation Duration="0" To="#FF6c9171" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="buttonContent"/>
+                                                                <ColorAnimation Duration="0:0:0.05" To="{StaticResource CalendarItem.MouseOver.Border}" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="buttonContentBorder"/>
                                                             </Storyboard>
                                                         </VisualState>
                                                         <VisualState x:Name="Disabled">
@@ -313,7 +314,9 @@
                                                         </VisualState>
                                                     </VisualStateGroup>
                                                 </VisualStateManager.VisualStateGroups>
-                                                <ContentPresenter x:Name="buttonContent" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" TextElement.Foreground="#FF333333" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1,4,1,9" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                                <Border x:Name="buttonContentBorder"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Transparent" BorderThickness="1" CornerRadius="2" Padding="4,2,4,2">
+                                                    <ContentPresenter x:Name="buttonContent" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" TextElement.Foreground="{StaticResource CalendarItem.Static.Foreground}" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center"/>
+                                                </Border>
                                             </Grid>
                                         </ControlTemplate>
                                     </Grid.Resources>
@@ -326,10 +329,10 @@
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    <Button x:Name="PART_PreviousButton" Grid.Column="0" Focusable="False" HorizontalAlignment="Left" Height="20" Grid.Row="0" Template="{StaticResource PreviousButtonTemplate}" Width="28"/>
-                                    <Button x:Name="PART_HeaderButton" Grid.Column="1" FontWeight="Bold" Focusable="False" FontSize="10.5" HorizontalAlignment="Center" Grid.Row="0" Template="{StaticResource HeaderButtonTemplate}" VerticalAlignment="Center"/>
-                                    <Button x:Name="PART_NextButton" Grid.Column="2" Focusable="False" HorizontalAlignment="Right" Height="20" Grid.Row="0" Template="{StaticResource NextButtonTemplate}" Width="28"/>
-                                    <Grid x:Name="PART_MonthView" Grid.ColumnSpan="3" HorizontalAlignment="Center" Margin="6,-1,6,6" Grid.Row="1" Visibility="Visible">
+                                    <Button x:Name="PART_PreviousButton" Grid.Column="0" Focusable="False" HorizontalAlignment="Left" Height="20" Margin="2,2,0,0" Grid.Row="0" Template="{StaticResource PreviousButtonTemplate}" VerticalAlignment="Top"/>
+                                    <Button x:Name="PART_HeaderButton" Grid.Column="1" FontWeight="Bold" Focusable="False" FontSize="10.5" Height="20"  Margin="0,2,0,0" HorizontalAlignment="Center" Grid.Row="0" Template="{StaticResource HeaderButtonTemplate}" VerticalAlignment="Top"/>
+                                    <Button x:Name="PART_NextButton" Grid.Column="2" Focusable="False" HorizontalAlignment="Right" Height="20" Margin="0,2,2,0" Grid.Row="0" Template="{StaticResource NextButtonTemplate}" VerticalAlignment="Top"/>
+                                    <Grid x:Name="PART_MonthView" Grid.ColumnSpan="3" HorizontalAlignment="Center" Margin="3,1,3,3" Grid.Row="1" Visibility="Visible">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
@@ -349,7 +352,7 @@
                                             <RowDefinition Height="Auto"/>
                                         </Grid.RowDefinitions>
                                     </Grid>
-                                    <Grid x:Name="PART_YearView" Grid.ColumnSpan="3" HorizontalAlignment="Center" Margin="6,-3,7,6" Grid.Row="1" Visibility="Hidden">
+                                    <Grid x:Name="PART_YearView" Grid.ColumnSpan="3" HorizontalAlignment="Center" Margin="6,2,7,6" Grid.Row="1" Visibility="Hidden">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
@@ -474,7 +477,7 @@
                                 <VisualState x:Name="Today">
                                     <Storyboard>
                                         <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="TodayBackground"/>
-                                        <ColorAnimation Duration="0" To="#FFFFFFFF" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="NormalText"/>
+                                        <ColorAnimation Duration="0" To="{StaticResource CalendarDayButton.Today.Foreground}" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="NormalText"/>
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
@@ -505,19 +508,20 @@
     <Style x:Key="CalendarCalendarButtonStyle" TargetType="{x:Type CalendarButton}" BasedOn="{StaticResource {x:Type CalendarButton}}"/>
     <Style x:Key="CalendarCalendarDayButtonStyle" TargetType="{x:Type CalendarDayButton}" BasedOn="{StaticResource {x:Type CalendarDayButton}}"/>
     <Style x:Key="CalendarCalendarItemStyle" TargetType="{x:Type CalendarItem}" BasedOn="{StaticResource {x:Type CalendarItem}}"/>
+    <SolidColorBrush x:Key="Calendar.Static.Border" Color="#FF7EA183"/>
     <Style TargetType="{x:Type Calendar}">
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF68A170" Offset="0"/>
-                    <GradientStop Color="#FF5E9766" Offset="0.16"/>
+                    <GradientStop Color="#FF328C3E" Offset="0"/>
+                    <GradientStop Color="#FF288234" Offset="0.16"/>
                     <GradientStop Color="#FFFFFFFF" Offset="0.16"/>
                     <GradientStop Color="#FFFFFFFF" Offset="1"/>
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderBrush" Value="#FF146E20"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Calendar.Static.Border}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="CalendarItemStyle" Value="{StaticResource CalendarCalendarItemStyle}"/>
         <Setter Property="CalendarButtonStyle" Value="{StaticResource CalendarCalendarButtonStyle}"/>
@@ -707,7 +711,7 @@
                                             </Grid.RowDefinitions>
                                             <Border x:Name="Highlight" BorderBrush="{StaticResource DatePicker.Selected.Border}" BorderThickness="1" Grid.ColumnSpan="4" CornerRadius="2" Margin="-1" Opacity="0" Grid.Row="0" Grid.RowSpan="4"/>
                                             <Border x:Name="Background" BorderBrush="#FFFFFFFF" BorderThickness="1" Background="#FF1F3B53" Grid.ColumnSpan="4" CornerRadius=".5" Margin="0,-1,0,0" Opacity="1" Grid.Row="1" Grid.RowSpan="3"/>
-                                            <Border x:Name="BackgroundGradient" BorderBrush="{StaticResource ResourceKey=LightSystemColour}" BorderThickness="1" Grid.ColumnSpan="4" CornerRadius="2" Margin="0,-1,0,0" Opacity="1" Grid.Row="1" Grid.RowSpan="3">
+                                            <Border x:Name="BackgroundGradient" BorderBrush="{StaticResource ResourceKey=LightSystemColour}" BorderThickness="1" Grid.ColumnSpan="4" CornerRadius="0,0,2,2" Margin="0,-1,0,0" Opacity="1" Grid.Row="1" Grid.RowSpan="3">
                                                 <Border.Background>
                                                     <LinearGradientBrush EndPoint=".7,1" StartPoint=".7,0">
                                                         <GradientStop Color="#FFFFFFFF" Offset="0"/>
@@ -774,9 +778,10 @@
     <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Border" Color="Transparent"/>
     <SolidColorBrush x:Key="ComboBox.MouseOver.Glyph" Color="#FF000000"/>
     <SolidColorBrush x:Key="ComboBox.MouseOver.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="#FF1E782A"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="#FF7EA183"/>
     <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Border" Color="#FF1E782A"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Border" Color="#FF7EA183"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Foreground" Color="#FF536656"/>
     <LinearGradientBrush x:Key="ComboBox.MouseOver.Editable.Button.Background" StartPoint="0.5, 0" EndPoint="0.5,1">
         <GradientStop Color="#6B68A170" Offset="0"/>
         <GradientStop Color="#6B5E9766" Offset="1"/>
@@ -801,7 +806,7 @@
     <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Button.Border" Color="Transparent"/>
     <SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="#FF707070"/>
     <SolidColorBrush x:Key="ComboBox.Selection" Color="#FF6c9171"/>
-    <SolidColorBrush x:Key="ComboBox.Popup.Border" Color="#FF1E782A"/>
+    <SolidColorBrush x:Key="ComboBox.Popup.Border" Color="#FF7EA183"/>
     <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="IsTabStop" Value="false"/>
@@ -904,7 +909,7 @@
             </Grid.ColumnDefinitions>
             <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
                 <Border x:Name="dropDownBorder" BorderBrush="{StaticResource ComboBox.Popup.Border}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" CornerRadius="2"  MinWidth="{Binding ActualWidth, ElementName=templateRoot}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                    <ScrollViewer x:Name="DropDownScrollViewer">
+                    <ScrollViewer x:Name="DropDownScrollViewer" Padding="1">
                         <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                             <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
                                 <Rectangle x:Name="opaqueRect" Fill="{Binding Background, ElementName=dropDownBorder}" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
@@ -1008,7 +1013,7 @@
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource ComboBox.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ComboBox.Static.Border}"/>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+        <Setter Property="Foreground" Value="{StaticResource ComboBox.Static.Foreground}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
@@ -1028,17 +1033,17 @@
     <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHover.Background" Color="#1F1E782A"/>
     <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHover.Border" Color="Transparent"/>
     <LinearGradientBrush x:Key="ComboBoxItem.ItemsviewSelected.Background" StartPoint="0.5, 0" EndPoint="0.5,1">
-        <GradientStop Color="#FF419B4D" Offset="0"/>
-        <GradientStop Color="#FF379143" Offset="1"/>
+        <GradientStop Color="#FF328C3E" Offset="0"/>
+        <GradientStop Color="#FF288234" Offset="1"/>
     </LinearGradientBrush>
     <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelected.Border" Color="Transparent"/>
-    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelected.Text" Color="White"/>
-    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewStatic.Text" Color="Black"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelected.Text" Color="#FFD5DED6"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewStatic.Text" Color="#FF536656"/>
     <LinearGradientBrush x:Key="ComboBoxItem.ItemsviewSelectedHover.Background" StartPoint="0.5, 0" EndPoint="0.5,1">
         <GradientStop Color="#FF419B4D" Offset="0"/>
         <GradientStop Color="#FF379143" Offset="1"/>
     </LinearGradientBrush>
-    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedHover.Border" Color="#FF1E782A"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedHover.Border" Color="#FF7EA183"/>
     <LinearGradientBrush x:Key="ComboBoxItem.ItemsviewSelectedNoFocus.Background" StartPoint="0.5, 0" EndPoint="0.5,1">
         <GradientStop Color="#FF419B4D" Offset="0"/>
         <GradientStop Color="#FF379143" Offset="1"/>
@@ -1046,7 +1051,7 @@
     <SolidColorBrush x:Key="ComboBoxItem.ItemsviewSelectedNoFocus.Border" Color="Transparent"/>
     <SolidColorBrush x:Key="ComboBoxItem.ItemsviewFocus.Border" Color="Transparent"/>
     <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHoverFocus.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHoverFocus.Border" Color="#FF1E782A"/>
+    <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHoverFocus.Border" Color="#FF7EA183"/>
     <Style TargetType="{x:Type ComboBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Padding" Value="4,1"/>

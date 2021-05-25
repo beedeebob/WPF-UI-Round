@@ -72,10 +72,6 @@ namespace WPF_UI_ROUND
                 scaleTransform.ScaleY -= 0.1;
             }
 
-            var centerOfViewport = new Point(scrollViewer.ViewportWidth / 2,
-                                             scrollViewer.ViewportHeight / 2);
-            scrollViewer.TranslatePoint(centerOfViewport, grid);
-
             e.Handled = true;
         }
     }
