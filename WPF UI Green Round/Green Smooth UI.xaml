@@ -1798,7 +1798,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListView}">
-                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2" Padding="1">
                         <Themes:ListBoxChrome x:Name="Bd" BorderThickness="0" Background="{TemplateBinding Background}" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderFocused="{TemplateBinding IsKeyboardFocusWithin}" SnapsToDevicePixels="true">
                             <ScrollViewer Padding="{TemplateBinding Padding}" Style="{DynamicResource {x:Static GridView.GridViewScrollViewerStyleKey}}">
                                 <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
@@ -1846,11 +1846,12 @@
         <GradientStop Color="#ff419B4D" Offset="0"/>
         <GradientStop Color="#ff379143" Offset="1"/>
     </LinearGradientBrush>
-    <SolidColorBrush x:Key="ListItem.MouseOver.Border" Color="#FF419B4D"/>
+    <SolidColorBrush x:Key="ListItem.MouseOver.Border" Color="#FF7EA183"/>
     <SolidColorBrush x:Key="ListItem.Selected.Border" Color="Transparent"/>
-    <SolidColorBrush x:Key="ListItem.SelectedMouseOver.Border" Color="#FF419B4D"/>
-    <SolidColorBrush x:Key="ListItem.Selected.Text" Color="White"/>
-    <SolidColorBrush x:Key="ListItem.Text" Color="Black"/>
+    <SolidColorBrush x:Key="ListItem.SelectedMouseOver.Border" Color="#FF7EA183"/>
+    <SolidColorBrush x:Key="ListItem.SelectedNoFocus.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="ListItem.Selected.Text" Color="#FFD5DED6"/>
+    <SolidColorBrush x:Key="ListItem.Text" Color="#FF536656"/>
     <Style TargetType="{x:Type ListViewItem}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource ListViewItemFocusVisual}"/>
         <Setter Property="Background" Value="Transparent"/>
@@ -1886,7 +1887,7 @@
                                 <Condition Property="Selector.IsSelectionActive" Value="false"/>
                             </MultiTrigger.Conditions>
                             <Setter Property="Background" Value="{StaticResource ListItemSelectedInactiveFill}"/>
-                            <Setter Property="BorderBrush" Value="#FFCFCFCF"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource ListItem.SelectedNoFocus.Border}"/>
                             <Setter Property="TextBlock.Foreground" Value="{StaticResource ListItem.Selected.Text}"/>
                         </MultiTrigger>
                         <MultiTrigger>
@@ -1910,24 +1911,24 @@
         <VirtualizingStackPanel IsItemsHost="True"/>
     </ItemsPanelTemplate>
     <LinearGradientBrush x:Key="GridViewColumnHeaderBackground" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#502D8739" Offset="0"/>
-        <GradientStop Color="#50237D2F" Offset="1"/>
+        <GradientStop Color="Transparent" Offset="0"/>
+        <GradientStop Color="Transparent" Offset="1"/>
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="GridViewColumnHeaderBorderBackground" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#FFCCCCCC" Offset="0"/>
-        <GradientStop Color="#FFC2C2C2" Offset="1"/>
+        <GradientStop Color="LightGray" Offset="0"/>
+        <GradientStop Color="LightGray" Offset="1"/>
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="GridViewColumnHeaderHoverBackground" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#702D8739" Offset="0"/>
-        <GradientStop Color="#702D8739" Offset="1"/>
+        <GradientStop Color="Transparent" Offset="0"/>
+        <GradientStop Color="Transparent" Offset="1"/>
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="GridViewColumnHeaderPressBackground" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#902D8739" Offset="0"/>
-        <GradientStop Color="#902D8739" Offset="1"/>
+        <GradientStop Color="Transparent" Offset="0"/>
+        <GradientStop Color="Transparent" Offset="1"/>
     </LinearGradientBrush>
-    <SolidColorBrush x:Key="GridViewColumnHeader.MouseOver.Text" Color="White"/>
-    <SolidColorBrush x:Key="GridViewColumnHeader.Pressed.Text" Color="White"/>
-    <SolidColorBrush x:Key="GridViewColumnHeader.Text" Color="White"/>
+    <SolidColorBrush x:Key="GridViewColumnHeader.MouseOver.Text" Color="#FF536656"/>
+    <SolidColorBrush x:Key="GridViewColumnHeader.Pressed.Text" Color="#FF536656"/>
+    <SolidColorBrush x:Key="GridViewColumnHeader.Text" Color="#FF536656"/>
     <Style x:Key="GridViewColumnHeaderGripper" TargetType="{x:Type Thumb}">
         <Setter Property="Canvas.Right" Value="-9"/>
         <Setter Property="Width" Value="18"/>
@@ -1949,18 +1950,19 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Background" Value="{StaticResource GridViewColumnHeaderBackground}"/>
         <Setter Property="BorderBrush" Value="{StaticResource GridViewColumnHeaderBorderBackground}"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
         <Setter Property="Padding" Value="2,2,2,2"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="Foreground" Value="{StaticResource GridViewColumnHeader.Text}"/>
         <Setter Property="FontFamily" Value="SegoeUI"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
                     <Grid SnapsToDevicePixels="true">
-                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
-                            <Border x:Name="HeaderBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,0" Background="Transparent" CornerRadius="2" Padding="2,0,2,0">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,1">
+                            <Border x:Name="HeaderBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,0,0" Background="Transparent" CornerRadius="2" Padding="0,0,0,0">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition MaxHeight="7"/>
@@ -2017,7 +2019,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
-                            <Border x:Name="HeaderBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,1,0,1" Background="{TemplateBinding Background}"/>
+                            <Border x:Name="HeaderBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"/>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="Height" Value="Auto">
                                     <Setter Property="MinHeight" Value="20"/>
