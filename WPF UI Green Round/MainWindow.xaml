@@ -88,6 +88,15 @@
                         </ListView>
                     </Grid>
                 </TabItem>
+                <TabItem  Header="DataGrid">
+                    <DataGrid x:Name="dataGrid_demo" Margin="10,10,10,10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Column 1" Binding="{Binding Value1}"/>
+                            <DataGridTextColumn Header="Column 2"  Binding="{Binding Value2}"/>
+                            <DataGridTextColumn Header="Column 3" Binding="{Binding Value3}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
             </TabControl>
         </Grid>
     </ScrollViewer>

@@ -30,6 +30,13 @@ namespace WPF_UI_ROUND
             scrollViewer.PreviewMouseWheel += ScrollViewer_PreviewMouseWheel;
             this.KeyDown += MainWindow_KeyDown;
             this.KeyUp += MainWindow_KeyUp;
+
+            dataGrid_demo.ItemsSource = new Demo[]
+            {
+                new Demo("Value1", "Value2", "Value3"),
+                new Demo("Value10", "Value20", "Value30"),
+                new Demo("Value111", "Value222", "Value333"),
+            };
         }
 
         private void MainWindow_KeyUp(object sender, KeyEventArgs e)
@@ -73,6 +80,19 @@ namespace WPF_UI_ROUND
             }
 
             e.Handled = true;
+        }
+    }
+    public class Demo
+    {
+        public string Value1 { get; set; }
+        public string Value2 { get; set; }
+        public string Value3 { get; set; }
+
+        public Demo(string value1, string value2, string value3)
+        {
+            Value1 = value1;
+            Value2 = value2;
+            Value3 = value3;
         }
     }
 }
