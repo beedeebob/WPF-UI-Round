@@ -26,7 +26,9 @@
                             <DatePickerTextBox Margin="10,0,0,0" Height="25" Width="100"  HorizontalAlignment="Left"/>
                         </StackPanel>
                         <StackPanel Height="auto" Margin="10,10,0,0" HorizontalAlignment="Left" Orientation="Horizontal">
-                            <Calendar Margin="10,0,0,0" Height="auto" Width="auto" HorizontalAlignment="Left"/>
+                            <ScrollViewer Height="100" Width="100" HorizontalScrollBarVisibility="Visible">
+                                <Calendar Margin="10,0,0,0" Height="auto" Width="auto" HorizontalAlignment="Left"/>
+                            </ScrollViewer>
                             <CalendarItem Margin="10,0,0,0" Width="auto" HorizontalAlignment="Left"/>
                             <CalendarButton Margin="10,0,0,0" Content="1" HorizontalAlignment="Left" />
                             <CalendarDayButton Margin="10,0,0,0" Content="1" HorizontalAlignment="Left" />
@@ -66,6 +68,36 @@
                         <ListBoxItem>
                             <TextBox Text="TextBox Demo"/>
                         </ListBoxItem>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
+                        <ListBoxItem Content="Fill"/>
                     </ListBox>
                 </TabItem>
                 <TabItem Header="ListView">
