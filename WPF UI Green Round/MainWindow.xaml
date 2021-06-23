@@ -40,6 +40,7 @@
                             <ComboBoxItem Content="Item4"/>
                             <ComboBoxItem Content="Item5"/>
                         </ComboBox>
+                        <ProgressBar Value="100" Width="100" Height="25" HorizontalAlignment="Left" Margin="10"/>
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="TreeView">
