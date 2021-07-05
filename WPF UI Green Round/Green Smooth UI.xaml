@@ -82,7 +82,7 @@
     <SolidColorBrush x:Key="TextBox.Selection" Color="#FF6c9171"/>
     <SolidColorBrush x:Key="TextBox.Static.Foreground" Color="#FF536656"/>
     <Style TargetType="{x:Type TextBox}">
-        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
         <Setter Property="Foreground" Value="{StaticResource TextBox.Static.Foreground}"/>
         <Setter Property="BorderThickness" Value="1"/>
@@ -543,10 +543,11 @@
     <SolidColorBrush x:Key="DatePickerTextBox.Selection" Color="#FF6c9171"/>
     <Style TargetType="{x:Type DatePickerTextBox}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
-        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="SelectionBrush" Value="{StaticResource DatePickerTextBox.Selection}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DatePickerTextBox}">
@@ -595,7 +596,7 @@
                         <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="1" Opacity="1" Padding="{TemplateBinding Padding}">
                             <Grid x:Name="WatermarkContent" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                                 <Border x:Name="ContentElement" BorderBrush="#FFFFFFFF" BorderThickness="1"/>
-                                <Border x:Name="watermark_decorator" BorderBrush="#FFFFFFFF" BorderThickness="1">
+                                <Border x:Name="watermark_decorator" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
                                     <ContentControl x:Name="PART_Watermark" Focusable="False" IsHitTestVisible="False" Opacity="0" Padding="2"/>
                                 </Border>
                                 <ScrollViewer x:Name="PART_ContentHost" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
@@ -611,6 +612,7 @@
     <!-- DatePicker-->
     <SolidColorBrush x:Key="DatePicker.Static.Border" Color="LightGray"/>
     <SolidColorBrush x:Key="DatePicker.MouseOver.Border" Color="#FF7EA183"/>
+    <Color x:Key="DatePicker.MouseOver.Image">#FF536656</Color>
     <SolidColorBrush x:Key="DatePicker.Selected.Border" Color="#FF7EA183"/>
     <SolidColorBrush x:Key="DatePicker.Static.Foreground" Color="#FF536656"/>
     <Style x:Key="DatePickerCalendarDayButtonStyle" TargetType="{x:Type CalendarDayButton}" BasedOn="{StaticResource {x:Type CalendarDayButton}}"/>
@@ -659,7 +661,7 @@
                                                 <VisualState x:Name="Normal"/>
                                                 <VisualState x:Name="MouseOver">
                                                     <Storyboard>
-                                                        <ColorAnimation Duration="0" To="#FF448DCA" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Background"/>
+                                                        <ColorAnimation Duration="0" To="{StaticResource DatePicker.MouseOver.Image}" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Background"/>
                                                         <ColorAnimationUsingKeyFrames BeginTime="0" Duration="00:00:00.001" Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[3].(GradientStop.Color)" Storyboard.TargetName="BackgroundGradient">
                                                             <SplineColorKeyFrame KeyTime="0" Value="#7FFFFFFF"/>
                                                         </ColorAnimationUsingKeyFrames>
@@ -674,7 +676,7 @@
                                                 <VisualState x:Name="Pressed">
                                                     <Storyboard>
                                                         <ColorAnimationUsingKeyFrames BeginTime="0" Duration="00:00:00.001" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Background">
-                                                            <SplineColorKeyFrame KeyTime="0" Value="#FF448DCA"/>
+                                                            <SplineColorKeyFrame KeyTime="0" Value="#FF54B056"/>
                                                         </ColorAnimationUsingKeyFrames>
                                                         <DoubleAnimationUsingKeyFrames BeginTime="0" Duration="00:00:00.001" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Highlight">
                                                             <SplineDoubleKeyFrame KeyTime="0" Value="1"/>
@@ -696,7 +698,7 @@
                                                 <VisualState x:Name="Disabled"/>
                                             </VisualStateGroup>
                                         </VisualStateManager.VisualStateGroups>
-                                        <Grid Background="#11FFFFFF" FlowDirection="LeftToRight" HorizontalAlignment="Center" Height="18" Margin="0" VerticalAlignment="Center" Width="19">
+                                        <Grid Background="Transparent" FlowDirection="LeftToRight" HorizontalAlignment="Center" Height="18" Margin="0" VerticalAlignment="Center" Width="19">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="20*"/>
                                                 <ColumnDefinition Width="20*"/>
@@ -710,7 +712,7 @@
                                                 <RowDefinition Height="19*"/>
                                             </Grid.RowDefinitions>
                                             <Border x:Name="Highlight" BorderBrush="{StaticResource DatePicker.Selected.Border}" BorderThickness="1" Grid.ColumnSpan="4" CornerRadius="2" Margin="-1" Opacity="0" Grid.Row="0" Grid.RowSpan="4"/>
-                                            <Border x:Name="Background" BorderBrush="#FFFFFFFF" BorderThickness="1" Background="#FF1F3B53" Grid.ColumnSpan="4" CornerRadius=".5" Margin="0,-1,0,0" Opacity="1" Grid.Row="1" Grid.RowSpan="3"/>
+                                            <Border x:Name="Background" BorderBrush="Transparent" BorderThickness="1" Background="#FF1F533B" Grid.ColumnSpan="4" CornerRadius=".5" Margin="0,-1,0,0" Opacity="1" Grid.Row="1" Grid.RowSpan="3"/>
                                             <Border x:Name="BackgroundGradient" BorderBrush="{StaticResource ResourceKey=LightSystemColour}" BorderThickness="1" Grid.ColumnSpan="4" CornerRadius="0,0,2,2" Margin="0,-1,0,0" Opacity="1" Grid.Row="1" Grid.RowSpan="3">
                                                 <Border.Background>
                                                     <LinearGradientBrush EndPoint=".7,1" StartPoint=".7,0">
@@ -770,14 +772,14 @@
     </Style>
 
     <!-- ComboBox-->
-    <SolidColorBrush x:Key="ComboBox.Static.Background" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Background" Color="Transparent"/>
     <SolidColorBrush x:Key="ComboBox.Static.Border" Color="LightGray"/>
     <SolidColorBrush x:Key="ComboBox.Static.Editable.Background" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="ComboBox.Static.Editable.Border" Color="#FFABADB3"/>
     <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Background" Color="Transparent"/>
     <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Border" Color="Transparent"/>
     <SolidColorBrush x:Key="ComboBox.MouseOver.Glyph" Color="#FF000000"/>
-    <SolidColorBrush x:Key="ComboBox.MouseOver.Background" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Background" Color="Transparent"/>
     <SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="#FF7EA183"/>
     <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Background" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Border" Color="#FF7EA183"/>
@@ -807,6 +809,7 @@
     <SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="#FF707070"/>
     <SolidColorBrush x:Key="ComboBox.Selection" Color="#FF6c9171"/>
     <SolidColorBrush x:Key="ComboBox.Popup.Border" Color="#FF7EA183"/>
+    <SolidColorBrush x:Key="ComboBox.Popup.Background" Color="#ffffffff"/>
     <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="IsTabStop" Value="false"/>
@@ -908,7 +911,7 @@
                 <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
             </Grid.ColumnDefinitions>
             <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
-                <Border x:Name="dropDownBorder" BorderBrush="{StaticResource ComboBox.Popup.Border}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" CornerRadius="2"  MinWidth="{Binding ActualWidth, ElementName=templateRoot}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                <Border x:Name="dropDownBorder" BorderBrush="{StaticResource ComboBox.Popup.Border}" BorderThickness="1" Background="{StaticResource ComboBox.Popup.Background}" CornerRadius="2"  MinWidth="{Binding ActualWidth, ElementName=templateRoot}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
                     <ScrollViewer x:Name="DropDownScrollViewer" Padding="1">
                         <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                             <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
@@ -1028,6 +1031,9 @@
                 <Setter Property="Padding" Value="2"/>
                 <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}"/>
             </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource ComboBox.MouseOver.Background}"/>
+            </Trigger>
         </Style.Triggers>
     </Style>
     <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHover.Background" Color="#1F1E782A"/>
@@ -1135,7 +1141,7 @@
 
 
     <!-- TabItem-->
-    <SolidColorBrush x:Key="TabControl.Selected.Background" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="TabControl.Selected.Background" Color="Transparent"/>
     <SolidColorBrush x:Key="TabControl.Selected.Border" Color="LightGray"/>
     <Style TargetType="{x:Type TabControl}">
         <Setter Property="Padding" Value="2"/>
@@ -1207,12 +1213,12 @@
         <GradientStop Color="#FF288234" Offset="1"/>
     </LinearGradientBrush>
     <SolidColorBrush x:Key="TabItem.Selected.Forground" Color="#FFD5DED6"/>
-    <SolidColorBrush x:Key="TabItem.Static.Background" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="TabItem.Static.Background" Color="Transparent"/>
     <SolidColorBrush x:Key="TabItem.Static.Border" Color="LightGray"/>
     <SolidColorBrush x:Key="TabItem.Static.Forground" Color="#FF536656"/>
     <LinearGradientBrush x:Key="TabItem.MouseOver.Background" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#ffffff" Offset="0.0"/>
-        <GradientStop Color="#ffffff" Offset="1.0"/>
+        <GradientStop Color="Transparent" Offset="0.0"/>
+        <GradientStop Color="Transparent" Offset="1.0"/>
     </LinearGradientBrush>
     <Color x:Key="TabItem.MouseOver.Border.Color">#FF7EA183</Color>
     <Color x:Key="TabItem.Static.Border.Color">LightGray</Color>
@@ -1637,8 +1643,9 @@
         </Style.Triggers>
     </Style>
     <SolidColorBrush x:Key="ListBorder" Color="LightGray"/>
+    <SolidColorBrush x:Key="TreeViewItem.Background" Color="Transparent"/>
     <Style TargetType="{x:Type TreeView}">
-        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+        <Setter Property="Background" Value="{StaticResource TreeViewItem.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ListBorder}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Padding" Value="1"/>
@@ -1681,7 +1688,7 @@
     </Style>
 
     <!-- ListBox-->
-    <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="ListBox.Static.Background" Color="Transparent"/>
     <SolidColorBrush x:Key="ListBox.Static.Border" Color="LightGray"/>
     <SolidColorBrush x:Key="ListBox.Disabled.Background" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="ListBox.Disabled.Border" Color="#FFD9D9D9"/>
@@ -1784,8 +1791,9 @@
 
     <!-- ListView-->
     <SolidColorBrush x:Key="ListView.Border" Color="LightGray"/>
+    <SolidColorBrush x:Key="ListView.Background" Color="Transparent"/>
     <Style TargetType="{x:Type ListView}">
-        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+        <Setter Property="Background" Value="{StaticResource ListView.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ListView.Border}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Foreground" Value="#FF042271"/>
@@ -2042,7 +2050,7 @@
     <SolidColorBrush x:Key="DataGrid.Static.Text" Color="#FF536656"/>
     <SolidColorBrush x:Key="DataGrid.Selected.Text" Color="#FFD5DED6"/>
     <SolidColorBrush x:Key="DataGrid.Static.GridLines" Color="LightGray"/>
-    <SolidColorBrush x:Key="DataGridRow.Static.Background" Color="White"/>
+    <SolidColorBrush x:Key="DataGridRow.Static.Background" Color="Transparent"/>
     <SolidColorBrush x:Key="DataGridSelectAllButton.MouseOver.Background" Color="#FF536656"/>
     <Style x:Key="DataGridSelectAllButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="BorderBrush" Value="{StaticResource DataGrid.Static.GridLines}"/>
@@ -2135,7 +2143,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <SolidColorBrush x:Key="DataGridColumnHeader.Static.Background" Color="White"/>
+    <SolidColorBrush x:Key="DataGridColumnHeader.Static.Background" Color="Transparent"/>
     <SolidColorBrush x:Key="DataGridColumnHeader.MouseOver.Border" Color="#FF7EA183"/>
     <SolidColorBrush x:Key="DataGridColumnHeader.Arrow.Fill" Color="#FF536656"/>
     <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -2235,7 +2243,7 @@
         </Style.Triggers>
     </Style>
     <Style TargetType="{x:Type DataGridRow}">
-        <Setter Property="Background" Value="White"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
         <Setter Property="ValidationErrorTemplate">
