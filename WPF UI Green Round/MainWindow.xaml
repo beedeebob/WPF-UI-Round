@@ -6,7 +6,7 @@
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
         xmlns:local="clr-namespace:WPF_UI_ROUND"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -43,6 +43,7 @@
                                 <ComboBoxItem Content="Item5"/>
                             </ComboBox>
                             <ProgressBar Value="50" Width="100" Height="25" HorizontalAlignment="Left" Margin="10"/>
+                            <CheckBox Content="Checkbox" Width="100" HorizontalAlignment="Left" Margin="10"/>
                         </StackPanel>
                     </TabItem>
                     <TabItem Header="TreeView">
