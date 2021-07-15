@@ -2726,4 +2726,28 @@
         </Setter>
     </Style>
 
+    <!-- ToolTip-->
+    <SolidColorBrush x:Key="Tooltip.Static.Foreground" Color="#FF536656"/>
+    <SolidColorBrush x:Key="Tooltip.Static.Background" Color="White"/>
+    <SolidColorBrush x:Key="Tooltip.Static.Border" Color="LightGray"/>
+    <Style TargetType="{x:Type ToolTip}">
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="HasDropShadow" Value="True" />
+        <Setter Property="Foreground" Value="{StaticResource Tooltip.Static.Foreground}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolTip">
+                    <Border Name="Border" BorderThickness="1" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" CornerRadius="2" Background="{StaticResource Tooltip.Static.Background}" BorderBrush="{StaticResource Tooltip.Static.Border}">
+                        <ContentPresenter Margin="4" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasDropShadow" Value="true">
+                            <Setter TargetName="Border" Property="CornerRadius" Value="4" />
+                            <Setter TargetName="Border" Property="SnapsToDevicePixels" Value="true" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

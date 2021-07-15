@@ -44,8 +44,7 @@
                             </ComboBox>
                             <ProgressBar Value="50" Width="100" Height="25" HorizontalAlignment="Left" Margin="10" />
                             <CheckBox Content="Checkbox" Width="100" HorizontalAlignment="Left" Margin="10"/>
-                            <TextBlock Text="TextBlock" Margin="10" HorizontalAlignment="Left"/>
-                            <GridViewRowPresenter HorizontalAlignment="Left" Height="25" Width="100"/>
+                            <TextBlock Text="TextBlock" Margin="10" HorizontalAlignment="Left" ToolTip="Textblock tooltip y'all"/>
                         </StackPanel>
                     </TabItem>
                     <TabItem Header="TreeView">
