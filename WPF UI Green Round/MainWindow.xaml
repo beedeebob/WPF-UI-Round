@@ -7,18 +7,41 @@
         xmlns:local="clr-namespace:WPF_UI_ROUND"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800">
+    <Window.Resources>
+        <Image x:Key="SaveIcon" Source="Save_16x.png"/>
+    </Window.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <ScrollViewer x:Name="scrollViewer" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <ScrollViewer x:Name="scrollViewer" Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
             <Grid x:Name="grid" RenderTransformOrigin="1,1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
                 <Grid.LayoutTransform>
                     <TransformGroup>
                         <ScaleTransform x:Name="scaleTransform"/>
                     </TransformGroup>
                 </Grid.LayoutTransform>
-                <TabControl Margin="10,10,10,10" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" TabStripPlacement="Top">
+
+                <Menu HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,0">
+                    <MenuItem Header="File">
+                        <MenuItem Header="New">
+                            <MenuItem Header="SubItem"/>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Header="open" InputGestureText="CTRL + O"/>
+                        <MenuItem Header="Save" Icon="{StaticResource SaveIcon}"/>
+                        <MenuItem Header="Big Long Text that is even longer" IsCheckable="True"/>
+                    </MenuItem>
+                    <MenuItem Header="Edit">
+                        <MenuItem Header="cut"/>
+                        <MenuItem Header="cut"/>
+                        <MenuItem Header="cut"/>
+                        <MenuItem Header="cut"/>
+                    </MenuItem>
+                </Menu>
+                <TabControl Grid.Row="2" Margin="10,10,10,10" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" TabStripPlacement="Top">
                     <TabItem Header="Controls 1">
                         <StackPanel VerticalAlignment="Stretch">
                             <Button Margin="10,10,0,0" Height="25" Content="Button" Width="100" HorizontalAlignment="Left"/>
