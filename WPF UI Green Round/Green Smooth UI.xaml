@@ -2922,7 +2922,7 @@
                 </Grid>
             </Border>
             <Popup x:Name="Popup" Placement="Right" HorizontalOffset="0" IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Fade">
-                <Border x:Name="SubmenuBorder" SnapsToDevicePixels="True" Background="{DynamicResource MenuPopupBrush}" BorderThickness="1" BorderBrush="{StaticResource Popup.Border}">
+                <Border x:Name="SubmenuBorder" SnapsToDevicePixels="True" Background="White" BorderThickness="1" BorderBrush="{StaticResource Popup.Border}">
                     <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto">
                         <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
                     </ScrollViewer>
